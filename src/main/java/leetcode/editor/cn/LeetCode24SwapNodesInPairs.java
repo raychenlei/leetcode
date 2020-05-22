@@ -12,6 +12,9 @@
 // Related Topics 链表
 
 package leetcode.editor.cn;
+
+import leetcode.editor.cn.common.ListNode;
+
 public class LeetCode24SwapNodesInPairs {
     public static void main(String[] args) {
         Solution solution = new LeetCode24SwapNodesInPairs().new Solution();

@@ -42,4 +42,9 @@ public class LeetCode70ClimbingStairs {
     }
 //leetcode submit region end(Prohibit modification and deletion)
 
+    class Solution2{
+        public int climbStairs(int n){
+
+        }
+    }
 }
