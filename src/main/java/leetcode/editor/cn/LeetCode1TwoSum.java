@@ -19,7 +19,6 @@ package leetcode.editor.cn;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.stream.Stream;
 
 public class LeetCode1TwoSum {
     public static void main(String[] args) {

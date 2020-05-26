@@ -44,7 +44,7 @@ public class LeetCode70ClimbingStairs {
 
     class Solution2{
         public int climbStairs(int n){
-
+            return 0;
         }
     }
 }
