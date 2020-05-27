@@ -51,5 +51,27 @@ public class LeetCode24SwapNodesInPairs {
 //    }
 
 //leetcode submit region end(Prohibit modification and deletion)
+    class Solution2 {
+        //非递归解法
+        public ListNode swapPairs(ListNode head) {
+            ListNode preNode = new ListNode(-1);
+            preNode.next = head;
 
+            ListNode temp = preNode;
+
+            while (temp.next != null && temp.next.next != null){
+
+                //两个要交换的节点
+                ListNode a = temp.next;
+                ListNode b = temp.next.next;
+
+                a.next = b.next;
+                b.next = a;
+                temp.next = b;
+                temp = a;
+
+            }
+            return preNode.next;
+        }
+    }
 }
