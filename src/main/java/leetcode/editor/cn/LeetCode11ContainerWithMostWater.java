@@ -23,7 +23,26 @@ public class LeetCode11ContainerWithMostWater {
         Solution solution = new LeetCode11ContainerWithMostWater().new Solution();
     }
     //leetcode submit region begin(Prohibit modification and deletion)
+
     class Solution {
+        public int maxArea(int[] height) {
+            //双指针法,每次移动较矮的那个柱子
+            int i = 0;
+            int j = height.length - 1;
+            int maxArea = 0;
+            while (i < j){
+                maxArea = Math.max(maxArea, (j - i) * Math.min(height[i], height[j]));
+                if(height[i] <= height[j]){
+                    i ++;
+                }else {
+                    j --;
+                }
+            }
+            return maxArea;
+        }
+    }
+
+    class Solution2 {
         public int maxArea(int[] height) {
             //暴力解法，双层循环，O(n2)
             // max[(j-i) * (min(height[i-1],height[j-1]))]
