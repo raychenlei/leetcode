@@ -49,10 +49,7 @@
 
 package leetcode.editor.cn;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Stack;
-import java.util.stream.Collectors;
 
 public class LeetCode1021RemoveOutermostParentheses {
     public static void main(String[] args) {
@@ -61,30 +58,36 @@ public class LeetCode1021RemoveOutermostParentheses {
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public String removeOuterParentheses(String S) {
+            //使用计数器来模拟进栈和出栈
+            //左括号加一，如果计数器为0，则记录起始位置，右括号减一，如果计数器为0，则输出，起始位置清零
+            return null;
+
+        }
+    }
+
+    class Solution2 {
+        public String removeOuterParentheses(String S) {
             //用栈来处理
-            Stack<Character> stack = new Stack<>();
+            //遇到左括号进栈，如果是第一次进栈，记录一下下标，表示一个原语的开始
+            //遇到右括号出栈，如果出栈后栈为空，则表示一个原语的结束，输出这个原语（掐头去尾），下标记录清零
+
             StringBuilder sb = new StringBuilder();
             int start = 0;
-            int end = 0;
-            for (int i = 0; i < S.length(); i++) {
+            Stack<Character> stack = new Stack<>();
+            for(int i = 0; i < S.length(); i ++){
                 char c = S.charAt(i);
-                //左括号入栈，右括号出栈
-                if (c == '('){
+                if(c == '('){
                     if (stack.isEmpty()){
                         start = i;
                     }
                     stack.push(c);
-                }
-                if(c == ')'){
+                }else {
                     stack.pop();
                     if (stack.isEmpty()){
-                        end = i;
-                        sb.append(S.substring(start+ 1, end));
+                        sb.append(S.substring(start + 1, i));
                         start = 0;
-                        end = 0;
                     }
                 }
-
             }
             return sb.toString();
         }

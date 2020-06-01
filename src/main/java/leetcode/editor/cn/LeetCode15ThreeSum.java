@@ -19,6 +19,8 @@
 
 package leetcode.editor.cn;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class LeetCode15ThreeSum {
@@ -32,7 +34,31 @@ public class LeetCode15ThreeSum {
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public List<List<Integer>> threeSum(int[] nums) {
-            return null;
+            Arrays.sort(nums);
+            List<List<Integer>> res = new ArrayList<>();
+            if (nums.length < 3){
+                return res;
+            }
+            for(int k = 0; k < nums.length -2; k ++){
+                if (nums[k] > 0) break;
+                int target = -nums[k];
+                int i = k + 1;
+                int j = nums.length - 1;
+                if (k > 0 && nums[k] == nums[k-1]) continue;
+                while (i < j){
+                    if (nums[i] + nums[j] == target){
+                        res.add(Arrays.asList(nums[k], nums[i], nums[j]));
+                        while (i < j && nums[i] == nums[++i]);
+                        while (i < j && nums[j] == nums[--j]);
+                    }else if(nums[i] + nums[j] < target){
+                        while (i < j && nums[i] == nums[++i]);
+                    }else {
+                        while (i < j && nums[j] == nums[--j]);
+                    }
+                }
+
+            }
+            return res;
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
