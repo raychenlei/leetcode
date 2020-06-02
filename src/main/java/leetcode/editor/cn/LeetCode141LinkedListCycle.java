@@ -42,6 +42,9 @@ package leetcode.editor.cn;
 
 import leetcode.editor.cn.common.ListNode;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class LeetCode141LinkedListCycle {
     public static void main(String[] args) {
         Solution solution = new LeetCode141LinkedListCycle().new Solution();
@@ -58,25 +61,35 @@ public class LeetCode141LinkedListCycle {
  *     }
  * }
  */
-    public class Solution {
+    //两种解法：
+    //1、用set记录访问过的节点，如果遇到相同的节点，则说明有环
+    //2、快慢指针，快指针移动两步，慢指针移动一步，快慢指针相遇说明有环，当快指针到头时说明无环
+    class Solution {
         public boolean hasCycle(ListNode head) {
-            if (head == null || head.next == null) {
-                return false;
-            }
-            //快慢指针
+            if (head == null || head.next == null) return false;
             ListNode slow = head;
-            ListNode fast = head.next;
-
-            while (fast != slow){
-                if (fast == null || fast.next == null){
-                    return false;
-                }
+            ListNode fast = head;
+            while (fast != null && fast.next != null){
+                //重点：先移动，再比较
                 slow = slow.next;
                 fast = fast.next.next;
+                if (fast == slow) return true;
             }
+            return false;
 
-            return true;
+        }
+    }
 
+    class Solution2 {
+        public boolean hasCycle(ListNode head) {
+            if (head == null || head.next == null) return false;
+            Set<ListNode> set = new HashSet<>();
+            while (head != null){
+                if (set.contains(head)) return true;
+                set.add(head);
+                head = head.next;
+            }
+            return false;
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)

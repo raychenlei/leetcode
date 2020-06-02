@@ -1,5 +1,7 @@
 package leetcode.editor.cn.common;
 
+import java.util.List;
+
 /**
  * @author chenlei
  * @version 1.0
@@ -17,6 +19,29 @@ public class ListUtils {
         }
         return preHead.next;
     }
+
+    public static ListNode buildCircleList(List<Integer> list, int index){
+        ListNode preHead = new ListNode(-1);
+        ListNode temp = preHead;
+
+        ListNode circleNode = null;
+        ListNode endNode = null;
+        for (int i = 0; i < list.size(); i++) {
+            ListNode node = new ListNode(list.get(i));
+            if (i == index){
+                circleNode = node;
+            }
+            if (i == list.size() - 1){
+                endNode = node;
+            }
+            temp.next = node;
+            temp = temp.next;
+        }
+        endNode.next = circleNode;
+        return preHead.next;
+    }
+
+
 
     public static void printList(ListNode list){
         if (list == null){
