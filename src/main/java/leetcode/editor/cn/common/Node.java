@@ -1,0 +1,25 @@
+package leetcode.editor.cn.common;
+
+import java.util.List;
+
+/**
+ * @author chenlei
+ * @version 1.0
+ * @description
+ * @date 2020/6/8 2:37 PM
+ **/
+public class Node {
+    public int val;
+    public List<Node> children;
+
+    public Node() {}
+
+    public Node(int _val) {
+        val = _val;
+    }
+
+    public Node(int _val, List<Node> _children) {
+        val = _val;
+        children = _children;
+    }
+}
