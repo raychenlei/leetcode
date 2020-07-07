@@ -21,7 +21,17 @@ public class Solution {
     }
 
     public static void main(String[] args) {
-        Solution solution = new Solution();
-        solution.getKthMagicNumber(9);
+//        Solution solution = new Solution();
+//        solution.getKthMagicNumber(9);
+        String s1 = new StringBuilder().append("aa").append("bb").toString();
+        System.out.println(s1.intern() == s1);
+        String s2 = new StringBuilder().append("me").append("me").toString();
+        System.out.println(s2.intern() == s2);
+
+    }
+
+    public void meme(){
+        String s = new StringBuilder().append("me").append("me").toString();
+        System.out.println(s.intern()==s);   //false
     }
 }

@@ -46,9 +46,9 @@ public class LeetCode347TopKFrequentElements {
                 if (queue.size() < k){
                     queue.offer(entry);
                 }else {
-                    if (entry.getValue() > queue){
-
-                    }
+//                    if (entry.getValue(1) > queue.size()){
+//
+//                    }
                 }
             }
             int[] res = new int[k];
