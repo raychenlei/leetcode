@@ -34,9 +34,10 @@ public class LeetCode200NumberOfIslands {
         Solution solution = new LeetCode200NumberOfIslands().new Solution();
     }
     //leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int numIslands(char[][] grid) {
 
+    class Solution {
+    public int numIslands(char[][] grid) {
+        return 0;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

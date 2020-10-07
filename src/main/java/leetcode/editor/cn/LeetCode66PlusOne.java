@@ -31,25 +31,33 @@ public class LeetCode66PlusOne {
 
     }
     //leetcode submit region begin(Prohibit modification and deletion)
-    class Solution {
-        public int[] plusOne(int[] digits) {
-            int length = digits.length;
-            for (int i = length -1; i >= 0 ; i--) {
-                digits[i]++;
-                digits[i] = digits[i] % 10;
-                //只有是0的时候才进位
-                if (digits[i] != 0) {
-                    return digits;
-                }
+
+class Solution {
+    public int[] plusOne(int[] digits) {
+        //这道题的关键是不知道进位的情况发生在哪个位置，也就不能判断最终的数组一共有几位
+        //每位上只需要特殊判断是否是9，如果是9就进位，继续循环，否则就加一跳出循环，返回当前数组
+        //当退出循环时，看看当前指针是不是-1，如果是，则说明原数组全部是9
+        //这时就创建长度为length + 1的数组，第一位赋值1，返回。（其余各位都是0，初始值就可以）
+        int i = digits.length - 1;
+        while (i >= 0){
+            if (digits[i] == 9){
+                digits[i] = 0;
+                i --;
+            }else {
+                digits[i] ++;
+                break;
             }
-            //最高位进位，其余各位都是0
-            int[] result = new int[length + 1];
-            result[0] = 1;
-            return result;
-
         }
-
+        if (i >= 0){
+            return digits;
+        }else {
+            int[] newDigits = new int[digits.length + 1];
+            newDigits[0] = 1;
+            return newDigits;
+        }
     }
+
+}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }
