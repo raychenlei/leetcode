@@ -45,9 +45,41 @@ public class LeetCode80RemoveDuplicatesFromSortedArrayIi {
         Solution solution = new LeetCode80RemoveDuplicatesFromSortedArrayIi().new Solution();
     }
     //leetcode submit region begin(Prohibit modification and deletion)
+
+/****
+ * 双指针类型的题目
+ * 重点：
+ * 1、固定一个指针index，用于标记结果数组的位置，另一个指针用于遍历，最终结果为[0,index]的区间数据，数组长度为index + 1
+ * 2、用一个变量用于记录每个元素重复的次数，
+ *      当遇到一个新的元素，将count变成1，index ++,将index的元素替换为nums[i]
+ *      遇到相同的元素，count++,如果count<=2, index ++,将index的元素替换为nums[i]
+ * 3、可以扩展到重复元素最多出现k次
+ * @description
+ * @author chenlei
+ * @date 2020/10/15 3:08 PM
+ * @version 1.0
+ **/
 class Solution {
     public int removeDuplicates(int[] nums) {
+        if (nums == null) return 0;
+        if (nums.length < 3) return nums.length;
+        int count = 1;
+        int index = 0;
+        for(int i = 1; i < nums.length; i ++){
+            if (nums[i] == nums[i - 1]){
+                count ++;
+                if (count <= 2){
+                    index ++;
+                    nums[index] = nums[i];
+                }
+            }else {
+                count = 1;
+                index ++;
+                nums[index] = nums[i];
 
+            }
+        }
+        return index + 1;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
